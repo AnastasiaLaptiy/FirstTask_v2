@@ -15,12 +15,39 @@ namespace FirstTask_v2
             deck.createDeck(card.CreateCard(1));
             deck.createDeck(card.CreateCard(2));
             deck.createDeck(card.CreateCard(3));
-  
+
             IEnumerator enumerator = deck.GetEnumerator();
 
             while (enumerator.MoveNext())
             {
                 CardModel cardModel = enumerator.Current as CardModel;
+                Console.WriteLine(cardModel.Id);
+                cardModel.Id++;
+            }
+
+            enumerator.Reset();
+            while (enumerator.MoveNext())
+            {
+                CardModel cardModel = enumerator.Current as CardModel;
+                Console.WriteLine(cardModel.Id);
+            }
+
+            DeckManager oneCard = new DeckManager();
+            IEnumerator enumeratorr = oneCard.GetEnumerator();
+            
+            oneCard.deck.Add(card.CreateCard(1));
+            enumerator.Reset();
+            while (enumeratorr.MoveNext())
+            {
+                CardModel cardModel = enumeratorr.Current as CardModel;
+                Console.WriteLine(cardModel.Id);
+                cardModel.Id++;
+            }
+
+            enumeratorr.Reset();
+            while (enumeratorr.MoveNext())
+            {
+                CardModel cardModel = enumeratorr.Current as CardModel;
                 Console.WriteLine(cardModel.Id);
             }
 

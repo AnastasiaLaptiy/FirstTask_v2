@@ -24,7 +24,7 @@ namespace FirstTask_v2.Managers
         }
 
         public void Reset()
-        { position = 0; }
+        { position = -1; }
 
         public object Current
         {

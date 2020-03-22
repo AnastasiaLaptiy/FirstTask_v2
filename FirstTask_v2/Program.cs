@@ -9,48 +9,30 @@ namespace FirstTask_v2
     {
         static void Main(string[] args)
         {
-            CardManager card = new CardManager();
-            DeckManager deck = new DeckManager();
-
-            deck.createDeck(card.CreateCard(1));
-            deck.createDeck(card.CreateCard(2));
-            deck.createDeck(card.CreateCard(3));
-
-            IEnumerator enumerator = deck.GetEnumerator();
-
-            while (enumerator.MoveNext())
+            CardModel[] card = new CardModel[3]
             {
-                CardModel cardModel = enumerator.Current as CardModel;
-                Console.WriteLine(cardModel.Id);
-                cardModel.Id++;
+                new CardModel(1),
+                new CardModel(2),
+                new CardModel(3),
+            };
+
+            DeckManager deckList = new DeckManager(card);
+            foreach (var item in deckList)
+            {
+                Console.WriteLine(item.Id);
             }
 
-            enumerator.Reset();
-            while (enumerator.MoveNext())
+            foreach (var item in deckList)
             {
-                CardModel cardModel = enumerator.Current as CardModel;
-                Console.WriteLine(cardModel.Id);
+                item.Id++;
+                Console.WriteLine(item.Id);
             }
 
-            DeckManager oneCard = new DeckManager();
-            IEnumerator enumeratorr = oneCard.GetEnumerator();
-            
-            oneCard.deck.Add(card.CreateCard(1));
-            enumerator.Reset();
-            while (enumeratorr.MoveNext())
+            card[2].Id++;
+            foreach (var item in deckList)
             {
-                CardModel cardModel = enumeratorr.Current as CardModel;
-                Console.WriteLine(cardModel.Id);
-                cardModel.Id++;
+                Console.WriteLine(item.Id);
             }
-
-            enumeratorr.Reset();
-            while (enumeratorr.MoveNext())
-            {
-                CardModel cardModel = enumeratorr.Current as CardModel;
-                Console.WriteLine(cardModel.Id);
-            }
-
             Console.ReadKey();
         }
     }

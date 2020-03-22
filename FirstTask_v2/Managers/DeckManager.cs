@@ -1,25 +1,32 @@
-﻿using FirstTask_v2.Managers;
+﻿using FirstTask_v2.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 
-namespace FirstTask_v2.Models
+namespace FirstTask_v2.Managers
 {
-    public class DeckManager
+    public class DeckManager : IEnumerable
     {
-        public List<CardModel> deck = new List<CardModel>();
-        
-        public void createDeck(CardModel card)
+        private CardModel[] deck;
+
+        public DeckManager(CardModel[] deckList)
         {
-            deck.Add(card);
-        }
-        public int Count
-        {
-            get { return deck.Count; }
-        }
-        public IEnumerator GetEnumerator()
-        {
-            return new DeckEnumerator(this);
+            deck = new CardModel[deckList.Length];
+            for (int i = 0; i < deckList.Length; i++)
+            {
+                deck[i] = deckList[i];
+            }
         }
 
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return (IEnumerator)GetEnumerator();
+        }
+
+        public DeckEnumerator GetEnumerator()
+        {
+            return new DeckEnumerator(deck);
+        }
     }
 }

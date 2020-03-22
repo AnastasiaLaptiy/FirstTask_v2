@@ -1,34 +1,54 @@
 ﻿using FirstTask_v2.Models;
+using System;
 using System.Collections;
 
 namespace FirstTask_v2.Managers
 {
     public class DeckEnumerator : IEnumerator
     {
-        int position = -1;
-        private DeckManager deckManager;
+        private int position = -1;
+        private CardModel[] deck;
 
-        public DeckEnumerator(DeckManager enumerable)
+        public DeckEnumerator(CardModel[] deckList)
         {
-            this.deckManager = enumerable;
+            deck = deckList;
         }
 
         public bool MoveNext()
         {
-            if (position < deckManager.Count - 1)
-            {
-                position++;
-                return true;
-            }
-            return false;
+            position++;
+            return position < deck.Length;
         }
 
         public void Reset()
-        { position = -1; }
-
-        public object Current
         {
-            get { return deckManager.deck[position]; }
+            position = -1;
+        }
+
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+            set { }
+        }
+
+        public CardModel Current
+        {
+            get
+            {
+                try
+                {
+                    return deck[position];
+                }
+
+                catch (IndexOutOfRangeException)
+                {
+                    throw new InvalidOperationException();
+                }
+
+            }
         }
     }
 }

@@ -21,12 +21,13 @@ namespace FirstTask_v2.Managers
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return (IEnumerator)GetEnumerator();
+            return GetEnumerator();
         }
 
         public DeckEnumerator GetEnumerator()
         {
-            return new DeckEnumerator(deck);
+             return new DeckEnumerator(deck);
+            
         }
     }
 }

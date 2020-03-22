@@ -33,6 +33,15 @@ namespace FirstTask_v2
             {
                 Console.WriteLine(item.Id);
             }
+
+            IEnumerable enumerable = new DeckManager_v2();
+            IEnumerator enumerator = enumerable.GetEnumerator();
+
+            while (enumerator.MoveNext())
+            {
+                CardModel card_ = enumerator.Current as CardModel;
+                Console.WriteLine(card_.Id);
+            }
             Console.ReadKey();
         }
     }

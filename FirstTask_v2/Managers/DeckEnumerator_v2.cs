@@ -1,15 +1,14 @@
-﻿using FirstTask_v2.Models;
-using System;
+﻿using System;
 using System.Collections;
 
 namespace FirstTask_v2.Managers
 {
-    public class DeckEnumerator : IEnumerator
+    public class DeckEnumerator_v2 : IEnumerator
     {
         private int position = -1;
-        private CardModel[] deck;
+        DeckManager_v2 deck;
 
-        public DeckEnumerator(CardModel[] deckList)
+        public DeckEnumerator_v2(DeckManager_v2 deckList)
         {
             deck = deckList;
         }
@@ -17,7 +16,7 @@ namespace FirstTask_v2.Managers
         public bool MoveNext()
         {
             position++;
-            return position < deck.Length;
+            return position < deck.Count;
         }
 
         public void Reset()
@@ -25,15 +24,7 @@ namespace FirstTask_v2.Managers
             position = -1;
         }
 
-        object IEnumerator.Current
-        {
-            get
-            {
-                return Current;
-            }
-        }
-
-        public CardModel Current
+        public object Current
         {
             get
             {
@@ -46,8 +37,8 @@ namespace FirstTask_v2.Managers
                 {
                     throw new InvalidOperationException();
                 }
-
             }
+
         }
     }
 }

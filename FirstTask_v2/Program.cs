@@ -1,46 +1,31 @@
 ﻿using FirstTask_v2.Managers;
 using FirstTask_v2.Models;
 using System;
-using System.Collections;
 
 namespace FirstTask_v2
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
-        {
-            CardModel[] card = new CardModel[3]
+        {           
+            FlowerModel flower = new FlowerModel();
+            foreach (var item in flower.FlowerList)
             {
-                new CardModel(1),
-                new CardModel(2),
-                new CardModel(3),
+                Console.WriteLine(item);
+            }
+
+            CharacterManager characterManager = new CharacterManager();
+
+            CharacterModel[] charactersList =
+            {
+                 characterManager.CreateCharacter(1, "Hisoka", "Bungee Gum"),
+                 characterManager.CreateCharacter(2, "Gon", "Jajanken"),
+                 characterManager.CreateCharacter(3, "Killua", "Thunderbolt")
             };
 
-            DeckManager deckList = new DeckManager(card);
-            foreach (var item in deckList)
+            foreach (var item in charactersList)
             {
-                Console.WriteLine(item.Id);
-            }
-
-            foreach (var item in deckList)
-            {
-                item.Id++;
-                Console.WriteLine(item.Id);
-            }
-
-            card[2].Id++;
-            foreach (var item in deckList)
-            {
-                Console.WriteLine(item.Id);
-            }
-
-            IEnumerable enumerable = new DeckManager_v2();
-            IEnumerator enumerator = enumerable.GetEnumerator();
-
-            while (enumerator.MoveNext())
-            {
-                CardModel card_ = enumerator.Current as CardModel;
-                Console.WriteLine(card_.Id);
+                Console.WriteLine($"{item.Name},{item.Ability}");
             }
             Console.ReadKey();
         }

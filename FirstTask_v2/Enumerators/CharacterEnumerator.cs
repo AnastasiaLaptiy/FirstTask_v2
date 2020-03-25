@@ -2,29 +2,18 @@
 using System;
 using System.Collections;
 
-namespace FirstTask_v2.Managers
+namespace FirstTask_v2.Enumerators
 {
-    public class DeckEnumerator : IEnumerator
+    public class CharacterEnumerator : IEnumerator
     {
         private int position = -1;
-        private CardModel[] deck;
 
-        public DeckEnumerator(CardModel[] deckList)
+        private CharacterModel[] character;
+
+        public CharacterEnumerator(CharacterModel[] characterList)
         {
-            deck = deckList;
+            character = characterList;
         }
-
-        public bool MoveNext()
-        {
-            position++;
-            return position < deck.Length;
-        }
-
-        public void Reset()
-        {
-            position = -1;
-        }
-
         object IEnumerator.Current
         {
             get
@@ -33,20 +22,29 @@ namespace FirstTask_v2.Managers
             }
         }
 
-        public CardModel Current
+        public bool MoveNext()
+        {            
+            position++;
+            return position < character.Length;
+        }
+
+        public void Reset()
+        {
+            position = -1;
+        }
+
+        public CharacterModel Current
         {
             get
             {
                 try
                 {
-                    return deck[position];
+                    return character[position];
                 }
-
                 catch (IndexOutOfRangeException)
                 {
                     throw new InvalidOperationException();
                 }
-
             }
         }
     }

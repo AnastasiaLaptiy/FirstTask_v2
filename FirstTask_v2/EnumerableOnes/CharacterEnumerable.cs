@@ -15,9 +15,16 @@ namespace FirstTask_v2.EnumerableOnes
                 characterList[i] = characters[i];
             }
         }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
         public IEnumerator GetEnumerator()
         {
             return new CharacterEnumerator(characterList);
+
         }
     }
 }

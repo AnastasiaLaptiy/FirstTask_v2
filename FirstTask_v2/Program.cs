@@ -27,6 +27,19 @@ namespace FirstTask_v2
             {
                 Console.WriteLine($"{item.Name},{item.Ability}");
             }
+
+            CardManager cardManager = new CardManager();
+            CardModel[] deck =
+            {
+                cardManager.createCard(1,"Moonfire"),
+                cardManager.createCard(2,"Flamestrike"),
+                cardManager.createCard(3,"Fireball")
+            };
+
+            foreach (var item in deck)
+            {
+                Console.WriteLine($"{item.Id},{item.Name}");
+            }
             Console.ReadKey();
         }
     }

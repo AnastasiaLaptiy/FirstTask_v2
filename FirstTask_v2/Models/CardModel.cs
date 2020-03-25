@@ -1,5 +1,4 @@
-﻿
-namespace FirstTask_v2.Models
+﻿namespace FirstTask_v2.Models
 {
     public class CardModel
     {

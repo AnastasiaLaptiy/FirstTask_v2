@@ -45,6 +45,19 @@ namespace FirstTask_v2
                 Console.WriteLine($"{item.Id}, {item.Name}");
 
             }
+
+            foreach (CardModel item in deck)
+            {
+                if (item.Id == 1) item.Id++;
+                Console.WriteLine(item.Id);
+            }
+
+            foreach (CardModel item in deck)
+            {
+                if (item.Id == 2) item.Id++;
+                Console.WriteLine(item.Id);
+            }
+
             Console.ReadKey();
         }
     }

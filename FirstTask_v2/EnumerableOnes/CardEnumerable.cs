@@ -1,10 +1,10 @@
-﻿using FirstTask_v2.Models;
+﻿using FirstTask_v2.Enumerators;
+using FirstTask_v2.Models;
 using System.Collections;
-
 
 namespace FirstTask_v2.EnumerableOnes
 {
-    public class CardEnumerable : IEnumerable
+    public class CardEnumerable 
     {
         private CardModel[] deck;
 
@@ -12,13 +12,15 @@ namespace FirstTask_v2.EnumerableOnes
         {
             for (int i = 0; i < deckList.Length; i++)
             {
-                deck[i] = deckList[i];
+                deck = deckList;
+
             }
         }
 
         public IEnumerator GetEnumerator()
         {
-            return (IEnumerator)this;
+            return new CardEnumerator(deck);
+
         }
     }
 }

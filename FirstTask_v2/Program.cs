@@ -1,4 +1,5 @@
-﻿using FirstTask_v2.Managers;
+﻿using FirstTask_v2.EnumerableOnes;
+using FirstTask_v2.Managers;
 using FirstTask_v2.Models;
 using System;
 
@@ -23,7 +24,8 @@ namespace FirstTask_v2
                  characterManager.CreateCharacter(3, "Killua", "Thunderbolt")
             };
 
-            foreach (var item in charactersList)
+            CharacterEnumerable character = new CharacterEnumerable(charactersList);
+            foreach (CharacterModel item in character.GetCharacterEnumerator())
             {
                 Console.WriteLine($"{item.Name},{item.Ability}");
             }
@@ -36,9 +38,12 @@ namespace FirstTask_v2
                 cardManager.createCard(3,"Fireball")
             };
 
-            foreach (var item in deck)
+            CardEnumerable card = new CardEnumerable(deck);
+
+            foreach (CardModel item in card)
             {
-                Console.WriteLine($"{item.Id},{item.Name}");
+                Console.WriteLine($"{item.Id}, {item.Name}");
+
             }
             Console.ReadKey();
         }

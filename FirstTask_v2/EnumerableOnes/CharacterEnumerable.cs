@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace FirstTask_v2.EnumerableOnes
 {
-    public class CharacterEnumerable:IEnumerable
+    public class CharacterEnumerable
     {
         private CharacterModel[] characterList;
         public CharacterEnumerable(CharacterModel[] characters)
@@ -16,15 +16,14 @@ namespace FirstTask_v2.EnumerableOnes
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        public IEnumerable GetCharacterEnumerator()
         {
-            return GetEnumerator();
+            return new CharacterEnumerator(characterList);
         }
-
+        /*
         public IEnumerator GetEnumerator()
         {
             return new CharacterEnumerator(characterList);
-
-        }
+        }*/
     }
 }

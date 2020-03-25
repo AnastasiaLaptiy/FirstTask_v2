@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace FirstTask_v2.Enumerators
 {
-    public class CharacterEnumerator : IEnumerator
+    public class CharacterEnumerator : IEnumerator, IEnumerable
     {
         private int position = -1;
 
@@ -25,7 +25,7 @@ namespace FirstTask_v2.Enumerators
         public bool MoveNext()
         {            
             position++;
-            return position < character.Length;
+            return position < character.Length-2;
         }
 
         public void Reset()
@@ -46,6 +46,11 @@ namespace FirstTask_v2.Enumerators
                     throw new InvalidOperationException();
                 }
             }
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return this;
         }
     }
 }

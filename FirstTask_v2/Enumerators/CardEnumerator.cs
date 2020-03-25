@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace FirstTask_v2.Enumerators
 {
-    public class CardEnumerator : IEnumerator//, IEnumerable
+    public class CardEnumerator: IEnumerator
     {
         private int position = -1;
         private CardModel[] deck;
@@ -14,6 +14,18 @@ namespace FirstTask_v2.Enumerators
             deck = deckList;
         }
 
+        public bool MoveNext()
+        {
+                position++;
+                return position < deck.Length;
+        }
+
+        public void Reset()
+        {
+            position = -1;
+        }
+
+
         object IEnumerator.Current
         {
             get
@@ -21,14 +33,18 @@ namespace FirstTask_v2.Enumerators
                 return Current;
             }
         }
-
+        
         public CardModel Current
         {
             get
             {
                 try
                 {
-                    return deck[position];
+                    if (deck[position].Id == 1)
+                    {
+                        return deck[position];
+                    }
+                    else return deck[2]; 
                 }
                 catch (IndexOutOfRangeException)
                 {
@@ -37,15 +53,5 @@ namespace FirstTask_v2.Enumerators
             }
         }
 
-        public bool MoveNext()
-        {
-            position++;
-            return position < deck.Length;
-        }
-
-        public void Reset()
-        {
-            position = -1;
-        }
     }
 }

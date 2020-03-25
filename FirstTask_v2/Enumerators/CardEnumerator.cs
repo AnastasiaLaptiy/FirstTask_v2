@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace FirstTask_v2.Enumerators
 {
-    public class CardEnumerator : IEnumerator, IEnumerable
+    public class CardEnumerator : IEnumerator//, IEnumerable
     {
         private int position = -1;
         private CardModel[] deck;
@@ -46,10 +46,6 @@ namespace FirstTask_v2.Enumerators
         public void Reset()
         {
             position = -1;
-        }
-        public IEnumerator GetEnumerator()
-        {
-            return this;
         }
     }
 }

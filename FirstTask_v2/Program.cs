@@ -57,6 +57,30 @@ namespace FirstTask_v2
                 if (item.Id == 2) item.Id++;
                 Console.WriteLine(item.Id);
             }
+            
+            CardModel[] deckList =
+            {
+                cardManager.createCard(1,"Frostbolt"),
+                cardManager.createCard(2,"Frostnova"),
+                cardManager.createCard(3,"Ice Block")
+            };
+
+            CardEnumerable cardList = new CardEnumerable(deckList);
+
+            var iterator = cardList.GetEnumerator();
+            while (iterator.MoveNext())
+            {
+                CardModel cardIter = iterator.Current as CardModel;
+                Console.WriteLine($"{cardIter.Id},{cardIter.Name}");
+            }
+
+            iterator.Reset();
+
+            while (iterator.MoveNext())
+            {
+                CardModel cardIter = iterator.Current as CardModel;
+                Console.WriteLine($"{cardIter.Id},{cardIter.Name}");
+            }
 
             Console.ReadKey();
         }

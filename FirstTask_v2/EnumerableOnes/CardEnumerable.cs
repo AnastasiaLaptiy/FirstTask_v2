@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace FirstTask_v2.EnumerableOnes
 {
-    public class CardEnumerable 
+    public class CardEnumerable:IEnumerable 
     {
         private CardModel[] deck;
 
@@ -13,14 +13,12 @@ namespace FirstTask_v2.EnumerableOnes
             for (int i = 0; i < deckList.Length; i++)
             {
                 deck = deckList;
-
             }
         }
 
         public IEnumerator GetEnumerator()
         {
             return new CardEnumerator(deck);
-
         }
     }
 }
